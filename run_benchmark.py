@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import typer
 from rich import print
+from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
 from src.reflexion_lab.agents import ReActAgent, ReflexionAgent
 from src.reflexion_lab.reporting import build_report, save_report
 from src.reflexion_lab.utils import load_dataset, save_jsonl
@@ -11,15 +12,39 @@ app = typer.Typer(add_completion=False)
 @app.command()
 def main(dataset: str = "data/hotpot_mini.json", out_dir: str = "outputs/sample_run", reflexion_attempts: int = 3) -> None:
     examples = load_dataset(dataset)
+    print(f"[cyan]Loaded {len(examples)} examples from {dataset}[/cyan]")
+    
     react = ReActAgent()
     reflexion = ReflexionAgent(max_attempts=reflexion_attempts)
-    react_records = [react.run(example) for example in examples]
-    reflexion_records = [reflexion.run(example) for example in examples]
+    
+    react_records = []
+    reflexion_records = []
+    
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        BarColumn(),
+        TaskProgressColumn(),
+    ) as progress:
+        # Chạy ReAct Agent
+        task1 = progress.add_task("[yellow]Running ReAct Agent...", total=len(examples))
+        for example in examples:
+            record = react.run(example)
+            react_records.append(record)
+            progress.update(task1, advance=1)
+        
+        # Chạy Reflexion Agent  
+        task2 = progress.add_task("[green]Running Reflexion Agent...", total=len(examples))
+        for example in examples:
+            record = reflexion.run(example)
+            reflexion_records.append(record)
+            progress.update(task2, advance=1)
+    
     all_records = react_records + reflexion_records
     out_path = Path(out_dir)
     save_jsonl(out_path / "react_runs.jsonl", react_records)
     save_jsonl(out_path / "reflexion_runs.jsonl", reflexion_records)
-    report = build_report(all_records, dataset_name=Path(dataset).name, mode="mock")
+    report = build_report(all_records, dataset_name=Path(dataset).name, mode="real")
     json_path, md_path = save_report(report, out_path)
     print(f"[green]Saved[/green] {json_path}")
     print(f"[green]Saved[/green] {md_path}")

@@ -15,11 +15,18 @@ class QAExample(BaseModel):
 
 class JudgeResult(BaseModel):
     # TODO: Học viên định nghĩa các trường cần thiết cho kết quả đánh giá (score, reason, ...)
-    pass
+    score: int
+    reason: str  # Lý do đánh giá
+    missing_evidence: list[str] = Field(default_factory=list)  # Bằng chứng thiếu
+    spurious_claims: list[str] = Field(default_factory=list)  # Thông tin sai
+
 
 class ReflectionEntry(BaseModel):
     # TODO: Học viên định nghĩa các trường cần thiết cho một mục reflection (attempt_id, lesson, strategy, ...)
-    pass
+    attempt_id: int  # Số lần thử
+    failure_reason: str  # Lý do thất bại
+    lesson: str  # Bài học rút ra
+    next_strategy: str  # Chiến thuật cho lần tiếp theo
 
 class AttemptTrace(BaseModel):
     attempt_id: int

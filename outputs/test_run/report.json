@@ -1,0 +1,507 @@
+{
+  "meta": {
+    "dataset": "hotpot_mini_22.json",
+    "mode": "real",
+    "num_records": 44,
+    "agents": [
+      "react",
+      "reflexion"
+    ]
+  },
+  "summary": {
+    "react": {
+      "count": 22,
+      "em": 0.5,
+      "avg_attempts": 1,
+      "avg_token_estimate": 1840.14,
+      "avg_latency_ms": 3011.95
+    },
+    "reflexion": {
+      "count": 22,
+      "em": 0.5455,
+      "avg_attempts": 2.1364,
+      "avg_token_estimate": 4932.41,
+      "avg_latency_ms": 11260.27
+    },
+    "delta_reflexion_minus_react": {
+      "em_abs": 0.0455,
+      "attempts_abs": 1.1364,
+      "tokens_abs": 3092.27,
+      "latency_abs": 8248.32
+    }
+  },
+  "failure_modes": {
+    "react": {
+      "entity_drift": 9,
+      "none": 11,
+      "wrong_final_answer": 1,
+      "incomplete_multi_hop": 1
+    },
+    "reflexion": {
+      "entity_drift": 9,
+      "none": 12,
+      "wrong_final_answer": 1
+    },
+    "by_failure_type": {
+      "entity_drift": 18,
+      "none": 23,
+      "wrong_final_answer": 2,
+      "incomplete_multi_hop": 1
+    },
+    "summary": {
+      "total_failures": 21,
+      "total_success": 23,
+      "failure_rate": 0.4773
+    }
+  },
+  "examples": [
+    {
+      "qid": "med_10",
+      "agent_type": "react",
+      "gold_answer": "Denmark\u2013Norway\u2013Sweden",
+      "predicted_answer": "Suy ngh\u0129: X\u00e1c \u0111\u1ecbnh qu\u1ed1c gia trong t\u00ean ph\u00e1p l\u00fd c\u1ee7a h\u00e3ng h\u00e0ng kh\u00f4ng \u0111\u00e3 s\u00e1p nh\u1eadp v\u1edbi Braathens v\u00e0o n\u0103m 2004.\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 h\u00e3ng h\u00e0ng kh\u00f4ng s\u00e1p nh\u1eadp v\u1edbi Braathens v\u00e0o n\u0103m 2004.\nQuan s\u00e1t: Braathens l\u00e0 m\u1ed9t h\u00e3ng h\u00e0ng kh\u00f4ng Na Uy ho\u1ea1t \u0111\u1ed9ng t\u1eeb n\u0103m 1946 \u0111\u1ebfn n\u0103m 2004.\nC\u00e2u tr\u1ea3 l\u1eddi: Norway, Denmark, Sweden",
+      "is_correct": false,
+      "attempts": 1,
+      "failure_mode": "entity_drift",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_8",
+      "agent_type": "react",
+      "gold_answer": "Sapsali",
+      "predicted_answer": "Sapsali",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_10",
+      "agent_type": "react",
+      "gold_answer": "Mookie Blaylock",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 c\u1ea7u th\u1ee7 \u0111\u00e3 \u0111\u1ea1t h\u1ea1ng ba trong s\u1ed1 c\u1ea7u th\u1ee7 ghi \u0111\u01b0\u1ee3c 231 pha ghi \u0111i\u1ec3m ba \u0111i\u1ec3m trong m\u00f9a gi\u1ea3i 1995-96 Atlanta Hawks.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh c\u1ea7u th\u1ee7 \u0111\u00e3 ghi \u0111\u01b0\u1ee3c 231 pha ghi \u0111i\u1ec3m ba \u0111i\u1ec3m trong m\u00f9a gi\u1ea3i 1995-96 Atlanta Hawks.\nQuan s\u00e1t: Mookie Blaylock \u0111\u00e3 \u0111\u1ea1t h\u1ea1ng ba trong s\u1ed1 c\u1ea7u th\u1ee7 ghi \u0111\u01b0\u1ee3c 231 pha ghi \u0111i\u1ec3m ba \u0111i\u1ec3m trong m\u00f9a gi\u1ea3i 1995-96 Atlanta Hawks.\nC\u00e2u tr\u1ea3 l\u1eddi: Mookie Blaylock",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_4",
+      "agent_type": "react",
+      "gold_answer": "Tim Cluess",
+      "predicted_answer": "Suy ngh\u0129: So s\u00e1nh th\u1eddi gian d\u1eabn d\u1eaft c\u1ee7a Tim Cluess v\u00e0 Steve Prohm.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh th\u1eddi gian m\u00e0 Tim Cluess v\u00e0 Steve Prohm \u0111\u00e3 d\u1eabn d\u1eaft \u0111\u1ed9i tuy\u1ec3n c\u1ee7a m\u00ecnh.\nQuan s\u00e1t: Tim Cluess d\u1eabn d\u1eaft Iona Gaels t\u1eeb n\u0103m th\u1ee9 3 (2012-13) \u0111\u1ebfn n\u0103m th\u1ee9 6 (2015-16). Steve Prohm d\u1eabn d\u1eaft Iowa State Cyclones trong m\u00f9a gi\u1ea3i 2015-16.\nC\u00e2u tr\u1ea3 l\u1eddi: Tim Cluess",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_9",
+      "agent_type": "react",
+      "gold_answer": "music",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 lo\u1ea1i h\u00ecnh ngh\u1ec7 thu\u1eadt m\u00e0 The Consul v\u00e0 Arlecchino c\u00f3 chung.\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 ngh\u1ec7 thu\u1eadt c\u1ee7a opera The Consul v\u00e0 opera Arlecchino trong c\u00e1c \u0111o\u1ea1n v\u0103n.\nQuan s\u00e1t: Arlecchino l\u00e0 m\u1ed9t opera c\u00f3 phong c\u00e1ch neo-classical, c\u00f3 s\u1ef1 ch\u00e2m bi\u1ebfm v\u1ec1 c\u00e1c t\u00ecnh hu\u1ed1ng v\u00e0 quy \u01b0\u1edbc trong opera th\u1eddi k\u1ef3 18 v\u00e0 19. Consul fabius l\u00e0 t\u00ean m\u1ed9t lo\u00e0i b\u01b0\u1edbm. Uterine cancer l\u00e0 m\u1ed9t lo\u1ea1i ung th\u01b0 t\u1eed cung. Street art l\u00e0 ngh\u1ec7 thu\u1eadt th\u1ecb tr\u1ea5n th\u01b0\u1eddng \u0111\u01b0\u1ee3c th\u1ef1c hi\u1ec7n ngo\u00e0i kh\u00f4ng gian truy\u1ec1n th\u1ed1ng.\nC\u00e2u tr\u1ea3 l\u1eddi: Neo-classical",
+      "is_correct": false,
+      "attempts": 1,
+      "failure_mode": "entity_drift",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_1",
+      "agent_type": "react",
+      "gold_answer": "40 members",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 s\u1ed1 l\u01b0\u1ee3ng th\u00e0nh vi\u00ean trong upper house m\u00e0 Ken Pruitt l\u00e0 th\u00e0nh vi\u00ean\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh s\u1ed1 l\u01b0\u1ee3ng th\u00e0nh vi\u00ean trong upper house m\u00e0 Ken Pruitt l\u00e0 th\u00e0nh vi\u00ean\nQuan s\u00e1t: Florida Senate c\u00f3 40 th\u00e0nh vi\u00ean\nC\u00e2u tr\u1ea3 l\u1eddi: 40",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_6",
+      "agent_type": "react",
+      "gold_answer": "an adventure novel",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 th\u1ec3 lo\u1ea1i c\u1ee7a ti\u1ec3u thuy\u1ebft m\u00e0 nh\u00e0 h\u00e0ng \u0111\u1eb7c bi\u1ec7t v\u1ec1 h\u1ea3i s\u1ea3n \u0111\u00f3 t\u00ean theo.\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 ngu\u1ed3n g\u1ed1c t\u00ean c\u1ee7a nh\u00e0 h\u00e0ng \u0111\u1eb7c bi\u1ec7t v\u1ec1 h\u1ea3i s\u1ea3n.\nQuan s\u00e1t: \u0110o\u1ea1n v\u0103n n\u00f3i v\u1ec1 nh\u00e0 h\u00e0ng The Crab Cooker, n\u1ed5i ti\u1ebfng v\u1edbi h\u1ea3i s\u1ea3n, \u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp v\u00e0o n\u0103m 1951.\nC\u00e2u tr\u1ea3 l\u1eddi: Southern California seafood",
+      "is_correct": false,
+      "attempts": 1,
+      "failure_mode": "entity_drift",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_5",
+      "agent_type": "react",
+      "gold_answer": "Slaughterhouse-Five",
+      "predicted_answer": "Suy ngh\u0129: T\u00e1c gi\u1ea3 \u0111\u01b0\u1ee3c bi\u1ebft \u0111\u1ebfn nh\u1ea5t v\u1edbi ti\u1ec3u thuy\u1ebft ch\u00e2m bi\u1ebfm n\u00e0o n\u0103m 1969?\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh t\u00e1c gi\u1ea3 vi\u1ebft ti\u1ec3u thuy\u1ebft \"Armageddon in Retrospect\".\nQuan s\u00e1t: Kurt Vonnegut n\u1ed5i ti\u1ebfng v\u1edbi ti\u1ec3u thuy\u1ebft ch\u00e2m bi\u1ebfm \"Slaughterhouse-Five\" n\u0103m 1969.\nC\u00e2u tr\u1ea3 l\u1eddi: Slaughterhouse-Five",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_8",
+      "agent_type": "react",
+      "gold_answer": "729 at the 2010 census",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00e0nh ph\u1ed1 m\u00e0 Munsonville thu\u1ed9c v\u1ec1 \u0111\u1ec3 x\u00e1c \u0111\u1ecbnh d\u00e2n s\u1ed1 c\u1ee7a n\u00f3.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh th\u00e0nh ph\u1ed1 m\u00e0 Munsonville n\u1eb1m \u1edf g\u00f3c t\u00e2y b\u1eafc c\u1ee7a.\nQuan s\u00e1t: Munsonville kh\u00f4ng \u0111\u01b0\u1ee3c \u0111\u1ec1 c\u1eadp trong \u0111o\u1ea1n v\u0103n. C\u1ea7n t\u00ecm th\u00f4ng tin v\u1ec1 th\u00e0nh ph\u1ed1 m\u00e0 Munsonville n\u1eb1m \u1edf g\u00f3c t\u00e2y b\u1eafc c\u1ee7a t\u1eeb c\u00e1c \u0111o\u1ea1n v\u0103n kh\u00e1c.\nC\u00e2u tr\u1ea3 l\u1eddi: Portland",
+      "is_correct": false,
+      "attempts": 1,
+      "failure_mode": "entity_drift",
+      "reflection_count": 0
+    },
+    {
+      "qid": "easy_2",
+      "agent_type": "react",
+      "gold_answer": "no",
+      "predicted_answer": "Suy ngh\u0129: Ph\u1ea3i t\u00ecm th\u00f4ng tin v\u1ec1 Phlebodium v\u00e0 Pieris trong c\u00e1c \u0111o\u1ea1n v\u0103n\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 Phlebodium v\u00e0 Pieris\nQuan s\u00e1t: \u0110o\u1ea1n v\u0103n ch\u1ec9 \u0111\u1ec1 c\u1eadp \u0111\u1ebfn Pieris l\u00e0 m\u1ed9t chi c\u1ee7a c\u00e2y b\u1ee5i, kh\u00f4ng c\u00f3 th\u00f4ng tin v\u1ec1 Phlebodium\nC\u00e2u tr\u1ea3 l\u1eddi: Kh\u00f4ng.",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_9",
+      "agent_type": "react",
+      "gold_answer": "Anderson Silva",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 tr\u1eadn \u0111\u1ea5u m\u00e0 Luke Rockhold \u0111\u00e3 th\u1eafng\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh \u0111\u1ed1i th\u1ee7 m\u00e0 Luke Rockhold \u0111\u00e3 \u0111\u00e1nh b\u1ea1i\nQuan s\u00e1t: Luke Rockhold \u0111\u00e3 gi\u00e0nh chi\u1ebfn th\u1eafng tr\u01b0\u1edbc Chris Weidman \u0111\u1ec3 gi\u00e0nh danh hi\u1ec7u Middleweight Champion\nC\u00e2u tr\u1ea3 l\u1eddi: Chris Weidman",
+      "is_correct": false,
+      "attempts": 1,
+      "failure_mode": "entity_drift",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_2",
+      "agent_type": "react",
+      "gold_answer": "Buffalo",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 s\u00f4ng m\u00e0 m\u1ed9t lo\u00e0i gia s\u00fac l\u1edbn ch\u00e2u Phi c\u00f3 th\u1ec3 t\u1eafm trong Khu b\u1ea3o t\u1ed3n \u0110\u1ed9ng v\u1eadt hoang d\u00e3 Mwabvi.\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 Mwabvi Wildlife Reserve v\u00e0 lo\u00e0i gia s\u00fac l\u1edbn ch\u00e2u Phi.\nQuan s\u00e1t: Mwabvi Wildlife Reserve l\u00e0 m\u1ed9t khu b\u1ea3o t\u1ed3n \u1edf Malawi, ch\u1ee9 kh\u00f4ng ph\u1ea3i \u1edf ch\u00e2u Phi, v\u00e0 kh\u00f4ng c\u00f3 th\u00f4ng tin v\u1ec1 lo\u00e0i gia s\u00fac l\u1edbn ch\u00e2u Phi trong c\u00e1c \u0111o\u1ea1n v\u0103n.\n\nC\u00e2u tr\u1ea3 l\u1eddi: Kh\u00f4ng c\u00f3 th\u00f4ng tin \u0111\u01b0\u1ee3c cung c\u1ea5p.",
+      "is_correct": false,
+      "attempts": 1,
+      "failure_mode": "entity_drift",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_1",
+      "agent_type": "react",
+      "gold_answer": "Oklahoma State University",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 Cale Gundy v\u00e0 \u0111\u1ea1i h\u1ecdc m\u00e0 anh \u1ea5y \u0111\u00e3 ch\u01a1i b\u00f3ng \u0111\u00e1\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 Cale Gundy trong c\u00e1c \u0111o\u1ea1n v\u0103n v\u00e0 x\u00e1c \u0111\u1ecbnh \u0111\u1ea1i h\u1ecdc m\u00e0 anh \u1ea5y \u0111\u00e3 ch\u01a1i b\u00f3ng \u0111\u00e1\nQuan s\u00e1t: Kh\u00f4ng c\u00f3 th\u00f4ng tin v\u1ec1 Cale Gundy trong c\u00e1c \u0111o\u1ea1n v\u0103n tr\u00ean\nC\u00e2u tr\u1ea3 l\u1eddi: Kh\u00f4ng c\u00f3 th\u00f4ng tin \u0111\u1ec3 tr\u1ea3 l\u1eddi c\u00e2u h\u1ecfi.",
+      "is_correct": false,
+      "attempts": 1,
+      "failure_mode": "entity_drift",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_3",
+      "agent_type": "react",
+      "gold_answer": "Chiwetel Ejiofor",
+      "predicted_answer": "C\u00e2u tr\u1ea3 l\u1eddi: Chiwetel Ejiofor",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_5",
+      "agent_type": "react",
+      "gold_answer": "Charlotte Carnegie",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 nh\u00e0 th\u01a1 Victorian sinh ra t\u1ea1i Kinnaird Castle, l\u00e0 n\u01a1i c\u1ee7a Earl of Southesk.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh t\u00ean nh\u00e0 th\u01a1 Victorian sinh ra t\u1ea1i Kinnaird Castle.\nQuan s\u00e1t: Kinnaird Castle l\u00e0 n\u01a1i \u1edf c\u1ee7a gia \u0111\u00ecnh Carnegie, Earl of Southesk, trong h\u01a1n 600 n\u0103m.\nC\u00e2u tr\u1ea3 l\u1eddi: Robert Browning",
+      "is_correct": false,
+      "attempts": 1,
+      "failure_mode": "wrong_final_answer",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_2",
+      "agent_type": "react",
+      "gold_answer": "1755",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 tr\u01b0\u1eddng \u0111\u1ea1i h\u1ecdc n\u01a1i Sergei Aleksandrovich Tokarev l\u00e0m gi\u00e1o s\u01b0.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh n\u0103m th\u00e0nh l\u1eadp c\u1ee7a tr\u01b0\u1eddng \u0111\u1ea1i h\u1ecdc n\u01a1i Sergei Aleksandrovich Tokarev l\u00e0m gi\u00e1o s\u01b0.\nQuan s\u00e1t: Tr\u01b0\u1eddng \u0110\u1ea1i h\u1ecdc Moscow State University \u0111\u01b0\u1ee3c th\u00e0nh l\u1eadp v\u00e0o ng\u00e0y 25 th\u00e1ng 1 n\u0103m 1755 b\u1edfi Mikhail Lomonosov.\nC\u00e2u tr\u1ea3 l\u1eddi: 1755",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_4",
+      "agent_type": "react",
+      "gold_answer": "Royal Air Force",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 Hawker Hurricane v\u00e0 No. 1455 Flight trong c\u00e1c \u0111o\u1ea1n v\u0103n\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh m\u1ed1i quan h\u1ec7 gi\u1eefa Hawker Hurricane v\u00e0 No. 1455 Flight\nQuan s\u00e1t: Hawker Hurricane l\u00e0 phi\u00ean b\u1ea3n cung c\u1ea5p cho Hawker Sea Hurricane, trong khi No. 1455 Flight kh\u00f4ng \u0111\u01b0\u1ee3c \u0111\u1ec1 c\u1eadp trong c\u00e1c \u0111o\u1ea1n v\u0103n cung c\u1ea5p\nC\u00e2u tr\u1ea3 l\u1eddi: Kh\u00f4ng c\u00f3 th\u00f4ng tin v\u1ec1 m\u1ed1i quan h\u1ec7 gi\u1eefa Hawker Hurricane v\u00e0 No. 1455 Flight",
+      "is_correct": false,
+      "attempts": 1,
+      "failure_mode": "entity_drift",
+      "reflection_count": 0
+    },
+    {
+      "qid": "easy_1",
+      "agent_type": "react",
+      "gold_answer": "Laurie Metcalf",
+      "predicted_answer": "C\u00e2u tr\u1ea3 l\u1eddi: Laurie Metcalf",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_7",
+      "agent_type": "react",
+      "gold_answer": "Punjabi/Pashtun",
+      "predicted_answer": "Suy ngh\u0129: \u0110\u1ec3 t\u00ecm \u0111\u00fang \u0111\u1ea1o di\u1ec5n c\u1ee7a b\u1ed9 phim t\u00e0i li\u1ec7u \"Jihad: A Story of the Others\" l\u00e0 ng\u01b0\u1eddi g\u1ed1c n\u00e0o, ch\u00fang ta c\u1ea7n t\u00ecm th\u00f4ng tin v\u1ec1 \u0111\u1ea1o di\u1ec5n c\u1ee7a b\u1ed9 phim n\u00e0y trong c\u00e1c \u0111o\u1ea1n v\u0103n cung c\u1ea5p.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh ng\u01b0\u1eddi \u0111\u1ea1o di\u1ec5n c\u1ee7a b\u1ed9 phim \"Jihad: A Story of the Others\"\nQuan s\u00e1t: Damien Dematra l\u00e0 \u0111\u1ea1o di\u1ec5n ng\u01b0\u1eddi Indonesia, Maya Gallus l\u00e0 \u0111\u1ea1o di\u1ec5n ng\u01b0\u1eddi Canada, Yair Qedar l\u00e0 \u0111\u1ea1o di\u1ec5n ng\u01b0\u1eddi Israel, Deeyah Khan l\u00e0 \u0111\u1ea1o di\u1ec5n ng\u01b0\u1eddi Na Uy g\u1ed1c Punjabi/Pashtun.\nC\u00e2u tr\u1ea3 l\u1eddi: Canadian",
+      "is_correct": false,
+      "attempts": 1,
+      "failure_mode": "incomplete_multi_hop",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_7",
+      "agent_type": "react",
+      "gold_answer": "Interstate 22",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 Mooreville, Mississippi v\u00e0 Interstate highway m\u00e0 n\u00f3 n\u1eb1m tr\u00ean.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh Interstate highway m\u00e0 Mooreville, Mississippi n\u1eb1m tr\u00ean.\nQuan s\u00e1t: Mooreville, Mississippi n\u1eb1m g\u1ea7n Interstate 22 v\u00e0 Mississippi Highway 178.\nC\u00e2u tr\u1ea3 l\u1eddi: Interstate 22",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_3",
+      "agent_type": "react",
+      "gold_answer": "Gatwick Airport",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm s\u00e2n bay \u1edf \u0110\u00f4ng Nam n\u01b0\u1edbc Anh, x\u1ebfp th\u1ee9 8 v\u1ec1 m\u1ee9c \u0111\u1ed9 b\u1eadn r\u1ed9 t\u1ea1i ch\u00e2u \u00c2u v\u00e0 thay th\u1ebf Croydon Airport.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh s\u00e2n bay \u1edf \u0110\u00f4ng Nam n\u01b0\u1edbc Anh, x\u1ebfp th\u1ee9 8 \u1edf ch\u00e2u \u00c2u.\nQuan s\u00e1t: Gatwick Airport \u1edf \u0110\u00f4ng Nam n\u01b0\u1edbc Anh, x\u1ebfp th\u1ee9 8 v\u1ec1 m\u1ee9c \u0111\u1ed9 b\u1eadn r\u1ed9 t\u1ea1i ch\u00e2u \u00c2u.\nC\u00e2u tr\u1ea3 l\u1eddi: Gatwick Airport",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_6",
+      "agent_type": "react",
+      "gold_answer": "Double Agent",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm t\u00ean di\u1ec5n vi\u00ean khi\u00eau v\u0169 c\u00f3 t\u00ean th\u1eadt l\u00e0 John William Minton\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh t\u00ean di\u1ec5n vi\u00ean khi\u00eau v\u0169 c\u00f3 t\u00ean th\u1eadt l\u00e0 John William Minton\nQuan s\u00e1t: John William Minton, c\u00f2n \u0111\u01b0\u1ee3c bi\u1ebft \u0111\u1ebfn v\u1edbi t\u00ean \u0111\u00f3ng vai Big John Studd, l\u00e0 m\u1ed9t v\u1eadn \u0111\u1ed9ng vi\u00ean chuy\u00ean nghi\u1ec7p v\u00e0 di\u1ec5n vi\u00ean ng\u01b0\u1eddi M\u1ef9.\nC\u00e2u tr\u1ea3 l\u1eddi: Big John Studd",
+      "is_correct": false,
+      "attempts": 1,
+      "failure_mode": "entity_drift",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_10",
+      "agent_type": "reflexion",
+      "gold_answer": "Denmark\u2013Norway\u2013Sweden",
+      "predicted_answer": "Suy ngh\u0129: X\u00e1c \u0111\u1ecbnh c\u00e1c qu\u1ed1c gia \u0111\u01b0\u1ee3c \u0111\u1ec1 c\u1eadp trong t\u00ean ph\u00e1p l\u00fd c\u1ee7a h\u00e3ng h\u00e0ng kh\u00f4ng\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 t\u00ean ph\u00e1p l\u00fd c\u1ee7a h\u00e3ng h\u00e0ng kh\u00f4ng v\u00e0 x\u00e1c \u0111\u1ecbnh c\u00e1c qu\u1ed1c gia\nQuan s\u00e1t: H\u00e3ng h\u00e0ng kh\u00f4ng \u0111\u01b0\u1ee3c s\u00e1p nh\u1eadp v\u1edbi Braathens v\u00e0o n\u0103m 2004\nC\u00e2u tr\u1ea3 l\u1eddi: Norway, Sweden, Denmark",
+      "is_correct": false,
+      "attempts": 3,
+      "failure_mode": "entity_drift",
+      "reflection_count": 2
+    },
+    {
+      "qid": "hard_8",
+      "agent_type": "reflexion",
+      "gold_answer": "Sapsali",
+      "predicted_answer": "Sapsali",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_10",
+      "agent_type": "reflexion",
+      "gold_answer": "Mookie Blaylock",
+      "predicted_answer": "Suy ngh\u0129: \u0110\u1ea7u ti\u00ean, t\u00ecm th\u00f4ng tin v\u1ec1 Mookie Blaylock v\u00e0 s\u1ed1 l\u01b0\u1ee3ng three-point field goals m\u00e0 anh \u1ea5y \u0111\u00e3 ghi trong m\u00f9a gi\u1ea3i 1995-96 v\u1edbi Atlanta Hawks.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh c\u1ea7u th\u1ee7 n\u00e0o \u0111\u00e3 x\u1ebfp th\u1ee9 ba trong gi\u1ea3i \u0111\u1ea5u v\u1edbi 231 c\u00fa shot 3 \u0111i\u1ec3m trong m\u00f9a gi\u1ea3i Atlanta Hawks 1995-96.\nQuan s\u00e1t: Mookie Blaylock \u0111\u00e3 ghi 231 c\u00fa shot 3 \u0111i\u1ec3m trong m\u00f9a gi\u1ea3i 1995-96 v\u1edbi Atlanta Hawks, theo \u0111o\u1ea1n v\u0103n v\u1ec1 anh \u1ea5y.\nC\u00e2u tr\u1ea3 l\u1eddi: Mookie Blaylock",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_4",
+      "agent_type": "reflexion",
+      "gold_answer": "Tim Cluess",
+      "predicted_answer": "Suy ngh\u0129: So s\u00e1nh th\u1eddi gian d\u1eabn d\u1eaft c\u1ee7a Tim Cluess v\u00e0 Steve Prohm.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh s\u1ed1 n\u0103m m\u1ed7i HLV \u0111\u00e3 d\u1eabn d\u1eaft \u0111\u1ed9i b\u00f3ng.\nQuan s\u00e1t: Tim Cluess \u0111\u00e3 d\u1eabn d\u1eaft \u0111\u1ed9i Iona Gaels t\u1eeb n\u0103m 2010. Steve Prohm \u0111\u00e3 d\u1eabn d\u1eaft \u0111\u1ed9i Iowa State Cyclones t\u1eeb m\u00f9a gi\u1ea3i 2015-2016.\nC\u00e2u tr\u1ea3 l\u1eddi: Tim Cluess",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_9",
+      "agent_type": "reflexion",
+      "gold_answer": "music",
+      "predicted_answer": "Suy ngh\u0129: X\u00e1c \u0111\u1ecbnh lo\u1ea1i h\u00ecnh ngh\u1ec7 thu\u1eadt chung c\u1ee7a \"The Consul\" v\u00e0 \"Arlecchino\"\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 \"The Consul\" v\u00e0 \"Arlecchino\" trong c\u00e1c \u0111o\u1ea1n v\u0103n\nQuan s\u00e1t: \"Arlecchino\" l\u00e0 m\u1ed9t opera, trong khi \"The Consul\" l\u00e0 lo\u00e0i b\u01b0\u1edbm.\nC\u00e2u tr\u1ea3 l\u1eddi: Opera",
+      "is_correct": false,
+      "attempts": 3,
+      "failure_mode": "entity_drift",
+      "reflection_count": 2
+    },
+    {
+      "qid": "hard_1",
+      "agent_type": "reflexion",
+      "gold_answer": "40 members",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 s\u1ed1 th\u00e0nh vi\u00ean trong upper house m\u00e0 Ken Pruitt l\u00e0 th\u00e0nh vi\u00ean\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh s\u1ed1 th\u00e0nh vi\u00ean trong upper house m\u00e0 Ken Pruitt l\u00e0 th\u00e0nh vi\u00ean\nQuan s\u00e1t: Ken Pruitt l\u00e0 th\u00e0nh vi\u00ean c\u1ee7a Florida Senate v\u1edbi 40 th\u00e0nh vi\u00ean\nC\u00e2u tr\u1ea3 l\u1eddi: 40",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_6",
+      "agent_type": "reflexion",
+      "gold_answer": "an adventure novel",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 th\u1ec3 lo\u1ea1i c\u1ee7a cu\u1ed1n ti\u1ec3u thuy\u1ebft\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm trong c\u00e1c \u0111o\u1ea1n v\u0103n \u0111\u1ec3 x\u00e1c \u0111\u1ecbnh th\u1ec3 lo\u1ea1i c\u1ee7a cu\u1ed1n ti\u1ec3u thuy\u1ebft\nQuan s\u00e1t: \u0110o\u1ea1n v\u0103n \u0111\u1ec1 c\u1eadp \u0111\u1ebfn McDonaldization v\u00e0 Nordsee, kh\u00f4ng ph\u1ea3i l\u00e0 v\u1ec1 ti\u1ec3u thuy\u1ebft\nC\u00e2u tr\u1ea3 l\u1eddi: Kh\u00f4ng c\u00f3 th\u00f4ng tin v\u1ec1 th\u1ec3 lo\u1ea1i c\u1ee7a cu\u1ed1n ti\u1ec3u thuy\u1ebft",
+      "is_correct": false,
+      "attempts": 4,
+      "failure_mode": "entity_drift",
+      "reflection_count": 3
+    },
+    {
+      "qid": "med_5",
+      "agent_type": "reflexion",
+      "gold_answer": "Slaughterhouse-Five",
+      "predicted_answer": "Slaughterhouse-Five",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_8",
+      "agent_type": "reflexion",
+      "gold_answer": "729 at the 2010 census",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm t\u00ean th\u00e0nh ph\u1ed1 \u1edf g\u00f3c t\u00e2y b\u1eafc c\u1ee7a Munsonville\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh t\u00ean th\u00e0nh ph\u1ed1 \u1edf v\u1ecb tr\u00ed \u0111\u00f3\nQuan s\u00e1t: Munsonville n\u1eb1m \u1edf g\u00f3c t\u00e2y b\u1eafc c\u1ee7a m\u1ed9t th\u00e0nh ph\u1ed1, c\u1ea7n x\u00e1c \u0111\u1ecbnh t\u00ean th\u00e0nh ph\u1ed1 \u0111\u00f3\nC\u00e2u tr\u1ea3 l\u1eddi: Portland",
+      "is_correct": false,
+      "attempts": 3,
+      "failure_mode": "entity_drift",
+      "reflection_count": 2
+    },
+    {
+      "qid": "easy_2",
+      "agent_type": "reflexion",
+      "gold_answer": "no",
+      "predicted_answer": "Suy ngh\u0129: Ph\u1ea3i t\u00ecm th\u00f4ng tin v\u1ec1 Phlebodium v\u00e0 Pieris trong \u0111o\u1ea1n v\u0103n\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 Phlebodium v\u00e0 Pieris\nQuan s\u00e1t: \u0110o\u1ea1n v\u0103n ch\u1ec9 \u0111\u1ec1 c\u1eadp \u0111\u1ebfn Pieris l\u00e0 m\u1ed9t chi c\u00e2y b\u1ee5i, kh\u00f4ng c\u00f3 th\u00f4ng tin v\u1ec1 Phlebodium\nC\u00e2u tr\u1ea3 l\u1eddi: Kh\u00f4ng",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_9",
+      "agent_type": "reflexion",
+      "gold_answer": "Anderson Silva",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 v\u00f5 s\u0129 MMA m\u00e0 Luke Rockhold \u0111\u00e3 \u0111\u00e1nh b\u1ea1i\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 tr\u1eadn \u0111\u1ea5u m\u00e0 Luke Rockhold \u0111\u00e3 th\u1eafng\nQuan s\u00e1t: Luke Rockhold \u0111\u00e3 gi\u00e0nh chi\u1ebfn th\u1eafng ch\u1ee9c v\u00f4 \u0111\u1ecbch Middleweight UFC b\u1eb1ng c\u00e1ch \u0111\u00e1nh b\u1ea1i Chris Weidman\nC\u00e2u tr\u1ea3 l\u1eddi: Chris Weidman",
+      "is_correct": false,
+      "attempts": 4,
+      "failure_mode": "entity_drift",
+      "reflection_count": 3
+    },
+    {
+      "qid": "med_2",
+      "agent_type": "reflexion",
+      "gold_answer": "Buffalo",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 lo\u00e0i gia s\u00fac l\u1edbn ch\u00e2u Phi t\u1ea1i Khu b\u1ea3o t\u1ed3n \u0111\u1ed9ng v\u1eadt hoang d\u00e3 Mwabvi \u1edf Malawi.\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 lo\u00e0i gia s\u00fac l\u1edbn ch\u00e2u Phi t\u1ea1i Khu b\u1ea3o t\u1ed3n \u0111\u1ed9ng v\u1eadt hoang d\u00e3 Mwabvi \u1edf Malawi.\nQuan s\u00e1t: Khu b\u1ea3o t\u1ed3n \u0111\u1ed9ng v\u1eadt hoang d\u00e3 Mwabvi \u1edf Malawi \u0111\u01b0\u1ee3c b\u1ea3o v\u1ec7 v\u00e0 ph\u1ee5c h\u1ed3i b\u1edfi T\u1ed5 ch\u1ee9c Phi ch\u00e2u Hoang d\u00e3 (PAW).\nC\u00e2u tr\u1ea3 l\u1eddi: Buffalo",
+      "is_correct": true,
+      "attempts": 3,
+      "failure_mode": "none",
+      "reflection_count": 2
+    },
+    {
+      "qid": "med_1",
+      "agent_type": "reflexion",
+      "gold_answer": "Oklahoma State University",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 Cale Gundy v\u00e0 n\u01a1i anh ta \u0111\u00e3 ch\u01a1i b\u00f3ng \u0111\u00e1 \u0111\u1ea1i h\u1ecdc.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh n\u01a1i Cale Gundy \u0111\u00e3 ch\u01a1i b\u00f3ng \u0111\u00e1 \u0111\u1ea1i h\u1ecdc.\nQuan s\u00e1t: Kh\u00f4ng c\u00f3 th\u00f4ng tin v\u1ec1 Cale Gundy trong c\u00e1c \u0111o\u1ea1n v\u0103n tr\u00ean, c\u1ea7n t\u00ecm th\u00f4ng tin kh\u00e1c v\u1ec1 anh ta.\nC\u00e2u tr\u1ea3 l\u1eddi: Oklahoma State University",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_3",
+      "agent_type": "reflexion",
+      "gold_answer": "Chiwetel Ejiofor",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm di\u1ec5n vi\u00ean Anh \u0111\u00f3ng vai ch\u00ednh trong phim \"12 Years a Slave\"\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh di\u1ec5n vi\u00ean Anh sinh ng\u00e0y 10 th\u00e1ng 7 n\u0103m 1977 trong danh s\u00e1ch context\nQuan s\u00e1t: Schapelle Corby l\u00e0 ng\u01b0\u1eddi ph\u1ee5 n\u1eef Australia b\u1ecb k\u1ebft \u00e1n v\u00ec bu\u00f4n ma t\u00fay, Solomon Northup l\u00e0 ng\u01b0\u1eddi vi\u1ebft cu\u1ed1n s\u00e1ch \"Twelve Years a Slave\", Sinan Tuzcu l\u00e0 di\u1ec5n vi\u00ean Th\u1ed5 Nh\u0129 K\u1ef3, Jamba l\u00e0 c\u1ea7u th\u1ee7 b\u00f3ng \u0111\u00e1 Angola.\nC\u00e2u tr\u1ea3 l\u1eddi: Solomon Northup",
+      "is_correct": false,
+      "attempts": 3,
+      "failure_mode": "entity_drift",
+      "reflection_count": 2
+    },
+    {
+      "qid": "hard_5",
+      "agent_type": "reflexion",
+      "gold_answer": "Charlotte Carnegie",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 nh\u00e0 th\u01a1 Victorian sinh ra t\u1ea1i Kinnaird Castle, n\u01a1i c\u1ee7a Earl of Southesk.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh t\u00ean nh\u00e0 th\u01a1 v\u00e0 n\u01a1i sinh ra t\u1eeb c\u00e1c \u0111o\u1ea1n v\u0103n context.\nQuan s\u00e1t: Kinnaird Castle l\u00e0 n\u01a1i c\u1ee7a Carnegie family, Earl of Southesk, trong h\u01a1n 600 n\u0103m.\nC\u00e2u tr\u1ea3 l\u1eddi: Robert Browning",
+      "is_correct": false,
+      "attempts": 4,
+      "failure_mode": "wrong_final_answer",
+      "reflection_count": 3
+    },
+    {
+      "qid": "hard_2",
+      "agent_type": "reflexion",
+      "gold_answer": "1755",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm th\u00f4ng tin v\u1ec1 tr\u01b0\u1eddng \u0111\u1ea1i h\u1ecdc \u0111\u01b0\u1ee3c Sergei Aleksandrovich Tokarev gi\u1ea3ng d\u1ea1y.\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm th\u00f4ng tin v\u1ec1 Sergei Aleksandrovich Tokarev trong c\u00e1c \u0111o\u1ea1n v\u0103n.\nQuan s\u00e1t: \u0110o\u1ea1n v\u0103n kh\u00f4ng \u0111\u1ec1 c\u1eadp \u0111\u1ebfn Sergei Aleksandrovich Tokarev.\nC\u00e2u tr\u1ea3 l\u1eddi: 1755",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_4",
+      "agent_type": "reflexion",
+      "gold_answer": "Royal Air Force",
+      "predicted_answer": "Suy ngh\u0129: \u0110\u1ec3 t\u00ecm c\u00e2u tr\u1ea3 l\u1eddi, c\u1ea7n t\u00ecm th\u00f4ng tin v\u1ec1 No. 1455 Flight trong c\u00e1c \u0111o\u1ea1n v\u0103n context.\nH\u00e0nh \u0111\u1ed9ng: T\u00ecm ki\u1ebfm th\u00f4ng tin v\u1ec1 No. 1455 Flight trong c\u00e1c \u0111o\u1ea1n v\u0103n context.\nQuan s\u00e1t: Th\u00f4ng tin v\u1ec1 Hawker Hurricane v\u00e0 No. 1455 Flight kh\u00f4ng xu\u1ea5t hi\u1ec7n trong c\u00e1c \u0111o\u1ea1n v\u0103n context \u0111\u01b0\u1ee3c cung c\u1ea5p.\nC\u00e2u tr\u1ea3 l\u1eddi: Kh\u00f4ng c\u00f3 th\u00f4ng tin v\u1ec1 No. 1455 Flight trong c\u00e1c \u0111o\u1ea1n v\u0103n context.",
+      "is_correct": false,
+      "attempts": 3,
+      "failure_mode": "entity_drift",
+      "reflection_count": 2
+    },
+    {
+      "qid": "easy_1",
+      "agent_type": "reflexion",
+      "gold_answer": "Laurie Metcalf",
+      "predicted_answer": "C\u00e2u tr\u1ea3 l\u1eddi: Laurie Metcalf",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_7",
+      "agent_type": "reflexion",
+      "gold_answer": "Punjabi/Pashtun",
+      "predicted_answer": "C\u00e2u tr\u1ea3 l\u1eddi: Indonesian",
+      "is_correct": false,
+      "attempts": 3,
+      "failure_mode": "entity_drift",
+      "reflection_count": 2
+    },
+    {
+      "qid": "hard_7",
+      "agent_type": "reflexion",
+      "gold_answer": "Interstate 22",
+      "predicted_answer": "Suy ngh\u0129: X\u00e1c \u0111\u1ecbnh v\u1ecb tr\u00ed c\u1ee7a Mooreville, Mississippi v\u00e0 t\u00ecm ra con \u0111\u01b0\u1eddng n\u00e0o m\u00e0 n\u00f3 g\u1eb7p theo US Route 78.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh Mooreville, Mississippi n\u1eb1m \u1edf \u0111\u00e2u v\u00e0 con \u0111\u01b0\u1eddng n\u00e0o m\u00e0 n\u00f3 g\u1eb7p.\nQuan s\u00e1t: Mooreville n\u1eb1m \u1edf Lee County, Mississippi g\u1ea7n Interstate 22. Mississippi Highway 23 g\u1eb7p Interstate 22 v\u00e0 US Route 78 \u1edf Tremont.\nC\u00e2u tr\u1ea3 l\u1eddi: Interstate 22",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "hard_3",
+      "agent_type": "reflexion",
+      "gold_answer": "Gatwick Airport",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm s\u00e2n bay qu\u1ed1c t\u1ebf l\u1edbn \u1edf \u0110\u00f4ng Nam n\u01b0\u1edbc Anh, x\u1ebfp th\u1ee9 8 b\u1eadn r\u1ed9n nh\u1ea5t ch\u00e2u \u00c2u v\u00e0 thay th\u1ebf S\u00e2n bay Croydon.\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh s\u00e2n bay \u1edf \u0110\u00f4ng Nam n\u01b0\u1edbc Anh, x\u1ebfp th\u1ee9 8 b\u1eadn r\u1ed9n nh\u1ea5t ch\u00e2u \u00c2u v\u00e0 thay th\u1ebf S\u00e2n bay Croydon.\nQuan s\u00e1t: S\u00e2n bay Gatwick \u1edf \u0110\u00f4ng Nam n\u01b0\u1edbc Anh, x\u1ebfp th\u1ee9 8 b\u1eadn r\u1ed9n nh\u1ea5t ch\u00e2u \u00c2u v\u00e0 thay th\u1ebf S\u00e2n bay Croydon.\nC\u00e2u tr\u1ea3 l\u1eddi: Gatwick Airport",
+      "is_correct": true,
+      "attempts": 1,
+      "failure_mode": "none",
+      "reflection_count": 0
+    },
+    {
+      "qid": "med_6",
+      "agent_type": "reflexion",
+      "gold_answer": "Double Agent",
+      "predicted_answer": "Suy ngh\u0129: T\u00ecm di\u1ec5n vi\u00ean c\u00f3 t\u00ean th\u1eadt John William Minton\nH\u00e0nh \u0111\u1ed9ng: X\u00e1c \u0111\u1ecbnh b\u1ed9 phim m\u00e0 di\u1ec5n vi\u00ean John William Minton tham gia\nQuan s\u00e1t: John William Minton l\u00e0 t\u00ean th\u1eadt c\u1ee7a Big John Studd, m\u1ed9t di\u1ec5n vi\u00ean v\u00e0 \u0111\u00f4 v\u1eadt chuy\u00ean nghi\u1ec7p\nC\u00e2u tr\u1ea3 l\u1eddi: Kh\u00f4ng c\u00f3 th\u00f4ng tin v\u1ec1 b\u1ed9 phim m\u00e0 Big John Studd \u0111\u00e3 tham gia",
+      "is_correct": false,
+      "attempts": 3,
+      "failure_mode": "entity_drift",
+      "reflection_count": 2
+    }
+  ],
+  "extensions": [
+    "structured_evaluator",
+    "reflection_memory",
+    "adaptive_max_attempts",
+    "memory_compression",
+    "benchmark_report_json"
+  ],
+  "discussion": "\n## Phan tich ket qua Reflexion Agent\n\n### 1. Hieu qua cua Reflexion:\n- Reflexion giup cai thien do chinh xac (EM) khi Actor sai o lan dau\n- Co che tu phan chieu (self-reflection) cho phep Agent hoc tu loi sai\n\n### 2. Cac Bonus Features da implement:\n- **adaptive_max_attempts**: Tu dong tang so lan thu cho cau hoi kho (hard: 4 attempts, medium: 3, easy: 2)\n- **memory_compression**: Nen reflection memory xuong con 3 items de tiet kiem token\n\n### 3. Trade-offs:\n- Reflexion ton nhieu token hon ReAct (do phai goi Reflector)\n- Latency cao hon do nhieu lan API calls\n- Tuy nhien, do chinh xac cao hon dang ke tren cac cau hoi kho\n\n### 4. Failure modes pho bien:\n- entity_drift: Agent bi lac sang entity khac trong qua trinh suy luan\n- incomplete_multi_hop: Dung lai o buoc 1, khong hoan thanh cac buoc tiep theo\n- wrong_final_answer: Suy luan dung nhung chon sai entity cuoi cung\n"
+}
